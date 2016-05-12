@@ -12,8 +12,9 @@ Functions to be created:
 - Read (scrape) the mac_address + right vendor
 - Print result to console
 '''
-
+from bs4 import BeautifulSoup
 import urllib2
+import requests
 
 
 class UserInput(object):
@@ -29,15 +30,20 @@ class UserInput(object):
         #this url can then be searched
         search_url = "http://coffer.com/mac_find/?string="
         mac_url = search_url + self.user_mac_input
-        search_coffer = urllib2.urlopen(mac_url)
-        return search_coffer
+        self.search_coffer = urllib2.urlopen(mac_url)
+        return self.search_coffer
 
     def scrape_site(self):
         #scrape the html-elements containing the mac_address + Vendor
         #return the scraped data
-        print "nothing here yet mate"
+        site_data = self.search_coffer
+        soup = BeautifulSoup(site_data, "lxml")
+        for link in soup.find_all('th'):
+            print ""
+            print link.get('table2')
 
 
 runprogram = UserInput()
 runprogram.user_input()
 runprogram.search_site()
+runprogram.scrape_site()
