@@ -17,7 +17,7 @@ import urllib2
 import requests
 
 
-class UserInput(object):
+class MacProgram(object):
     def __init__(self):
         pass
 
@@ -42,8 +42,11 @@ class UserInput(object):
             print ""
             print link.get('table2')
 
-
-runprogram = UserInput()
+#create program object
+runprogram = MacProgram()
+#get user input
 runprogram.user_input()
+#post mac address to site
 runprogram.search_site()
+#scrape content of site
 runprogram.scrape_site()
