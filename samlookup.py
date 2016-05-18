@@ -31,6 +31,7 @@ class MacProgram(object):
         search_url = "http://coffer.com/mac_find/?string="
         mac_url = search_url + self.user_mac_input
         self.search_coffer = urllib2.urlopen(mac_url)
+        print "cunt"
         return self.search_coffer
 
     def scrape_site(self):
@@ -39,7 +40,7 @@ class MacProgram(object):
         site_data = self.search_coffer
         soup = BeautifulSoup(site_data, "lxml")
         for link in soup.find_all('th'):
-            print ""
+            print "test"
             print link.get('table2')
 
 #create program object
