@@ -3,7 +3,7 @@
 - Post mac_address to http://coffer.com/mac_find/?string=
 - Return mac_address + vendor
 '''
-
+#testmac = 00:13:A9
 '''
 Functions to be created:
 - Get user input
@@ -31,7 +31,6 @@ class MacProgram(object):
         search_url = "http://coffer.com/mac_find/?string="
         mac_url = search_url + self.user_mac_input
         self.search_coffer = urllib2.urlopen(mac_url)
-        print "cunt"
         return self.search_coffer
 
     def scrape_site(self):
@@ -39,9 +38,8 @@ class MacProgram(object):
         #return the scraped data
         site_data = self.search_coffer
         soup = BeautifulSoup(site_data, "lxml")
-        for link in soup.find_all('th'):
-            print "test"
-            print link.get('table2')
+        for mac_data in soup.find_all("tbody"):
+            print soup.find_all('class=table2') 
 
 #create program object
 runprogram = MacProgram()
