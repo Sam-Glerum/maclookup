@@ -42,7 +42,7 @@ class MacProgram(object):
         #print mac address
         mytables = soup.find_all("td", {"class" : "table2"})
         for tr in mytables[:2]:
-            print mytables[0].text
+            print "MAC ADDRESS: {}".format(mytables[0].text)
 
 #create program object
 runprogram = MacProgram()
