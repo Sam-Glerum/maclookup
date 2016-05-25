@@ -38,8 +38,11 @@ class MacProgram(object):
         #return the scraped data
         site_data = self.search_coffer
         soup = BeautifulSoup(site_data, "lxml")
-        for mac_data in soup.find_all("tbody"):
-            print soup.find_all('class=table2') 
+
+        #print mac address
+        mytables = soup.find_all("td", {"class" : "table2"})
+        for tr in mytables[:2]:
+            print mytables[0].text
 
 #create program object
 runprogram = MacProgram()
